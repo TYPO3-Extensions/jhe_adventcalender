@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Angaben zum Hintergrundbild</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<image>
+						<TCEforms>
+							<label>Hintergrundbild für den Adventskalender</label>
+							<config>
+								<type>group</type>
+								<internal_type>file</internal_type>
+								<allowed>gif,png,jpg,jpeg</allowed>
+								<show_thumbs>1</show_thumbs>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>1</minitems>
+							</config>
+						</TCEforms>
+					</image>
+					<imageWidth>
+						<TCEforms>
+							<label>Bildbreite in px</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</imageWidth>
+					<imageHeight>
+						<TCEforms>
+							<label>Bildhöhe in px</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</imageHeight>
+					<altText>
+						<TCEforms>
+							<label>Alternative Text</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>25</size>
+							</config>
+						</TCEforms>
+					</altText>
+				</el>
+			</ROOT>
+		</sDEF>
+		<s_imagemap>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Angaben zur Imagemap</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<usemap>
+						<TCEforms>
+							<label>Image-Map-Bezeichnung</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>10</size>
+							</config>
+						</TCEforms>
+					</usemap>
+					<imageMap>
+						<TCEforms>
+							<label>Image-Map</label>
+							<config>
+								<type>text</type>
+								<size>10</size>
+								<rows>5</rows>
+							</config>
+						</TCEforms>
+					</imageMap>
+				</el>
+			</ROOT>
+		</s_imagemap>
+		<s_pids>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Angaben zur Imagemap</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<wicket1>
+						<TCEforms>
+							<label>PID Türchen 1</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket1>
+					<wicket2>
+						<TCEforms>
+							<label>PID Türchen 2</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket2>
+					<wicket3>
+						<TCEforms>
+							<label>PID Türchen 3</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket3>
+					<wicket4>
+						<TCEforms>
+							<label>PID Türchen 4</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket4>
+					<wicket5>
+						<TCEforms>
+							<label>PID Türchen 5</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket5>
+					<wicket6>
+						<TCEforms>
+							<label>PID Türchen 6</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket6>
+					<wicket7>
+						<TCEforms>
+							<label>PID Türchen 7</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket7>
+					<wicket8>
+						<TCEforms>
+							<label>PID Türchen 8</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket8>
+					<wicket9>
+						<TCEforms>
+							<label>PID Türchen 9</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket9>
+					<wicket10>
+						<TCEforms>
+							<label>PID Türchen 10</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket10>
+					<wicket11>
+						<TCEforms>
+							<label>PID Türchen 11</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket11>
+					<wicket12>
+						<TCEforms>
+							<label>PID Türchen 12</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket12>
+					<wicket13>
+						<TCEforms>
+							<label>PID Türchen 13</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket13>
+					<wicket14>
+						<TCEforms>
+							<label>PID Türchen 14</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket14>
+					<wicket15>
+						<TCEforms>
+							<label>PID Türchen 15</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket15>
+					<wicket16>
+						<TCEforms>
+							<label>PID Türchen 16</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket16>
+					<wicket17>
+						<TCEforms>
+							<label>PID Türchen 17</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket17>
+					<wicket18>
+						<TCEforms>
+							<label>PID Türchen 18</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket18>
+					<wicket19>
+						<TCEforms>
+							<label>PID Türchen 19</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket19>
+					<wicket20>
+						<TCEforms>
+							<label>PID Türchen 20</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket20>
+					<wicket21>
+						<TCEforms>
+							<label>PID Türchen 21</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket21>
+					<wicket22>
+						<TCEforms>
+							<label>PID Türchen 22</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket22>
+					<wicket23>
+						<TCEforms>
+							<label>PID Türchen 23</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket23>
+					<wicket24>
+						<TCEforms>
+							<label>PID Türchen 24</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</wicket24>
+				</el>
+			</ROOT>
+		</s_pids>
+		<s_additional>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Weitere Angaben</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<useajax>
+						<TCEforms>
+							<label>AJAX nutzen</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</useajax>
+				</el>
+			</ROOT>
+		</s_additional>
+	</sheets>
+</T3DataStructure> 
