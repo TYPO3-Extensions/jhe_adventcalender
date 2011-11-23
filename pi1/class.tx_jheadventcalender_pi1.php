@@ -72,7 +72,9 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		}
 		
 		$this->conf['useajax'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'useajax', 's_additional');
-		
+		$this->conf['layerWidth'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'layerWidth', 's_additional');
+		$this->conf['layerHeight'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'layerHeight', 's_additional');
+
 		//rebuild image-map
 		$imageMapArr = t3lib_div::xml2tree($this->conf['imageMap']);
 		$imageMapAreaArr = $imageMapArr['map']['0']['ch']['area'];
@@ -88,7 +90,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 
 			if($hrefTarget){
 				if($this->conf['useajax']){
-					$map .= '<area shape="' . $areaData['shape'] . '" coords="' . $areaData['coords'] . ' " onClick="alert(\'AJAX-Aufruf gestartet!\');document.getElementById(\'modal\').style.display = \'block\';" href="#" alt="' . $areaData['alt'] . '" />';
+					$map .= '<area shape="' . $areaData['shape'] . '" coords="' . $areaData['coords'] . ' " href="#" alt="' . $areaData['alt'] . '" onClick="openModal(\'#dialog\', \''. $this->conf['layerWidth'] .'\', \'' . $this->conf['layerHeight'] . '\', \'' . $this->conf['wicket'][$i] . '\')" />';
 				} else {
 					$map .= '<area shape="' . $areaData['shape'] . '" coords="' . $areaData['coords'] . ' " href="' . $hrefTarget . '" alt="' . $areaData['alt'] . '" />';
 				}
@@ -99,14 +101,13 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		
 		//ajax functionality
 		if($this->conf['useajax']){
-			$ajaxPanel = '
-				<div id="modal" style="display: none;position: absolute; top: 0; left: 0; z-index: 24999;width: 100%;height: 100%;background-color: #000;opacity: .5;">
-					<div id="ajaxpanel" onClick="alert(\'Ich gehe jetzt zu!\');document.getElementById(\'modal\').style.display = \'none\';" style="display: block;position: relative; width: 400px; height: 300px;margin: auto; z-index: 25000;background-color: #fff; opacity: 1;border: 3px solid green;">
-						PLATZHALTER FÜR AJAX-AUSGABE
-					</div>
-				</div>';
-		} else {
-			$ajaxPanel = '';
+
+			$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/adventcalender.js"></script>';
+			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
+						
+			$css = '<link rel="stylesheet" type="text/css" href="' . t3lib_extMgm::siteRelPath($this->extKey) . 'css/ajax.css" />';
+			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $css;
+
 		}
 		
 		$content='

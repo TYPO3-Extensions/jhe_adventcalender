@@ -1,0 +1,42 @@
+/* 
+    Document   : ajax
+    Created on : 22.11.2011, 09:50:05
+    Author     : jari-hermann.ernst
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#boxes {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* Z-index of #mask must lower than #boxes .window */
+#mask {
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+   
+#boxes .window {
+  position:absolute;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+ 
+ 
+/* Customize your modal window here, you can add background image too */
+#boxes #dialog {
+	background-color: #fff;
+	border: 2px solid #d3e4d5;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+

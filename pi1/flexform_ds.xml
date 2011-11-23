@@ -353,6 +353,26 @@
 							</config>
 						</TCEforms>
 					</useajax>
+					<layerWidth>
+						<TCEforms>
+							<label>Breite des Layers in px</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</layerWidth>
+					<layerHeight>
+						<TCEforms>
+							<label>Minimale Höhe des Layers in px</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</layerHeight>
 				</el>
 			</ROOT>
 		</s_additional>
