@@ -53,20 +53,23 @@ class ajax_adventcalender extends tslib_pibase {
 		while ($content = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($selectContent)){
 			$contentTitle = $content['header'];
 		}
-		
-		$url = 'http://dev.teampoint.info/index.php&id=' . $pageID;
-		$handle = fopen ($url, "r");
-		while (!feof($handle)) {
-			$buffer .= fgets($handle, 4096);
-		}
-		fclose ($handle);
-//t3lib_div::debug($buffer);
-		
-		
-		
-		
+
+		//@TODO: Link automatisch generieren
 		//create link to given page
 		//$pageContent = $this->cObj->getTypoLink_URL($pageID, array());
+		
+		$url = 'http://dev.teampoint.info/index.php?id=' . $pageID;
+
+		$handle = fopen ($url, 'r');
+		$i ='0';
+		while (!feof($handle)) {
+			$buffer .= fgets($handle, 4096);
+			$i++;
+		}
+		fclose ($handle);
+
+		$buffer = strstr($buffer, '<div');
+		$buffer = trim(substr($buffer, '0', strpos($buffer, '</body')));
 
 		$return = array(
 		    'pageTitle' => $pageName,
@@ -74,11 +77,11 @@ class ajax_adventcalender extends tslib_pibase {
 		    'url' => $url,
 		    'code' => $buffer
 		);
-		
+
 		return t3lib_div::array2json($return);
 	}
 }
-	 
+
 $output = t3lib_div::makeInstance('ajax_adventcalender');
 echo $output->main();
 ?>

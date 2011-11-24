@@ -33,7 +33,7 @@
  
 /* Customize your modal window here, you can add background image too */
 #boxes #dialog {
-	background-color: #fff;
+	background: #fff url('../img/bg_dialog.gif') no-repeat top right;
 	border: 2px solid #d3e4d5;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;

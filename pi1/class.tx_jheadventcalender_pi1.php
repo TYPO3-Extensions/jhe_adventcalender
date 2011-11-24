@@ -90,7 +90,13 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 
 			if($hrefTarget){
 				if($this->conf['useajax']){
-					$map .= '<area shape="' . $areaData['shape'] . '" coords="' . $areaData['coords'] . ' " href="#" alt="' . $areaData['alt'] . '" onClick="openModal(\'#dialog\', \''. $this->conf['layerWidth'] .'\', \'' . $this->conf['layerHeight'] . '\', \'' . $this->conf['wicket'][$i] . '\')" />';
+					$map .= '
+						<area shape="' . $areaData['shape'] . '"
+						 coords="' . $areaData['coords'] . ' " 
+						 href=""  
+						 id="' . $this->conf['wicket'][$i] . '"
+						 alt="' . $areaData['alt'] . '" 
+						/>';
 				} else {
 					$map .= '<area shape="' . $areaData['shape'] . '" coords="' . $areaData['coords'] . ' " href="' . $hrefTarget . '" alt="' . $areaData['alt'] . '" />';
 				}
@@ -102,25 +108,100 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		//ajax functionality
 		if($this->conf['useajax']){
 
-			$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/adventcalender.js"></script>';
+			$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/snowstorm.js"></script>';
 			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
+			
+			$js = '
+				<script type="text/javascript">
+				
+				function clearVariables(){
+					document.getElementById(\'dialog\').style.top = "";
+					document.getElementById(\'dialog\').style.left = "";
+					document.getElementById(\'dialog\').innerHTML = "";
+				}
+								
+				snowStorm.snowColor = \'#99ccff\'; //@TODO: per Flexform einstellbar machen snowColor
+				snowStorm.snowCharacter = \'*\'; //@TODO: per Flexform einstellbar machen sbowCharacter
+				snowStorm.useTwinkleEffect = false; //@TODO: per Flexform einstellbar machen useTwinkleEffect
+				snowStorm.zIndex = 9998; //@TODO: per Flexform einstellbar machen snowZIndex
+				snowStorm.flakeWidth = 16; //@TODO: per Flexform einstellbar machen snowFlakeWidth
+				snowStorm.flakeHeight = 16; //@TODO: per Flexform einstellbar machen snowFalkeHeight
+				
+				function stopSnowing(){
+					snowStorm.stop();
+				}
+
+				$(document).ready(function(){
+					
+					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"></div><div id="mask"></div></div>\').appendTo(\'body\');
+				
+					$(\'area\').click(function(e){
+						e.preventDefault();
 						
+						var id = $(this).attr(\'id\');
+												
+						$.ajax({
+							url: \'?eID=adventcalender\',
+							type: \'GET\',
+							data: \'pageID=\' + id,
+							dataType: \'json\',
+							success: function(result) {
+								//alert(result.code);
+								$(\'#dialog\').html(\'<h3>\' + result.pageTitle + \'<a id="dialogclose" href="#">Close it</a></h3><div>\' + result.code + \'<div>\');
+							}
+						});
+
+						var maskHeight = $(document).height();
+						var maskWidth = $(window).width();
+						$(\'#mask\').css({\'width\':maskWidth,\'height\':maskHeight});
+
+						var winH = $(window).height();
+						var winW = $(window).width();
+						$(\'#dialog\').css(\'top\',  winH/2-$(\'#dialog\').height()/2);
+						$(\'#dialog\').css(\'left\', winW/2-$(\'#dialog\').width()/2);
+						$(\'#dialog\').css(\'width\', ' . $this->conf['layerWidth'] . ');
+						$(\'#dialog\').css(\'min-height\', ' . $this->conf['layerHeight'] . ');
+						$(\'#dialog\').css(\'height\', \'auto\');
+						
+						$(\'#mask\').fadeIn(1000); //@TODO: per Flexform einstellbar machen modalFadeInTime
+						$(\'#mask\').fadeTo("slow",0.8);
+						$(\'#dialog\').fadeIn(2000); //@TODO: per Flexform einstellbar machen dialogFadeInTime
+
+					});
+					
+					//if close button is clicked
+					$(\'a#dialogclose\').click(function (e) {
+						//Cancel the link behavior
+						e.preventDefault();
+						alert(\'Fenster schliessen...\');
+						$(\'#mask, .window\').fadeOut(500); //@TODO: per Flexform einstellbar machen modalFadeOutTime
+					}); 
+					
+					//if mask is clicked
+					$(\'#mask\').click(function () {
+						stopSnowing();
+						$(this).fadeOut(500); //@TODO: per Flexform einstellbar machen modalFadeOutTime
+						$(\'.window\').fadeOut(500); //@TODO: per Flexform einstellbar machen modalFadeOutTime
+						window.setTimeout(\'clearVariables()\',500);	//@TODO: per Flexform einstellbar machen modalFadeOutTime
+					});
+				});
+				</script>
+			';
+			
 			$css = '<link rel="stylesheet" type="text/css" href="' . t3lib_extMgm::siteRelPath($this->extKey) . 'css/ajax.css" />';
 			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $css;
 
 		}
 		
 		$content='
+			' . $js . '
 			<img src="' . $this->conf['image'] . '" alt="' . $this->conf['altText'] . '" width="' . $this->conf['imageWidth'] . '" height="' . $this->conf['imageHeight'] . '" border="0" usemap="#' . $this->conf['usemap'] . '" title="' . $this->conf['altText'] . '" />
 			' . $map . '
-			' . $ajaxPanel . '
 		';
 	
 		return $this->pi_wrapInBaseClass($content);
 	}
 }
-
-
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/jhe_adventcalender/pi1/class.tx_jheadventcalender_pi1.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/jhe_adventcalender/pi1/class.tx_jheadventcalender_pi1.php']);
