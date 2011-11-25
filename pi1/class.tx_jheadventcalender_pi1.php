@@ -74,6 +74,17 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		$this->conf['useajax'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'useajax', 's_additional');
 		$this->conf['layerWidth'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'layerWidth', 's_additional');
 		$this->conf['layerHeight'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'layerHeight', 's_additional');
+		$this->conf['modalFadeInTime'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'ajaxModalFadeInTime', 's_additional');
+		$this->conf['dialogFadeInTime'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'ajaxDialogFadeInTime', 's_additional');
+		$this->conf['modalDialogFadeOutTime'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'ajaxModalDialogFadeOutTime', 's_additional');
+		
+		$this->conf['usesnow'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowUsage', 's_snowstorm');
+		$this->conf['snowColor'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowColor', 's_snowstorm');
+		$this->conf['snowCharacter'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowCharacter', 's_snowstorm');
+		$this->conf['snowUseTwinkleEffect'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowUseTwinkleEffect', 's_snowstorm');
+		$this->conf['snowZIndex'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowZIndex', 's_snowstorm');
+		$this->conf['snowFlakeWidth'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeWidth', 's_snowstorm');
+		$this->conf['snowFlakeHeight'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeHeight', 's_snowstorm');
 
 		//rebuild image-map
 		$imageMapArr = t3lib_div::xml2tree($this->conf['imageMap']);
@@ -107,9 +118,10 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		
 		//ajax functionality
 		if($this->conf['useajax']){
-
-			$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/snowstorm.js"></script>';
-			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
+			if($this->conf['usesnow']){
+				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/snowstorm.js"></script>';
+				$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
+			}
 			
 			$js = '
 				<script type="text/javascript">
@@ -118,26 +130,28 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 					document.getElementById(\'dialog\').style.top = "";
 					document.getElementById(\'dialog\').style.left = "";
 					document.getElementById(\'dialog\').innerHTML = "";
-				}
-								
-				snowStorm.snowColor = \'#99ccff\'; //@TODO: per Flexform einstellbar machen snowColor
-				snowStorm.snowCharacter = \'*\'; //@TODO: per Flexform einstellbar machen sbowCharacter
-				snowStorm.useTwinkleEffect = false; //@TODO: per Flexform einstellbar machen useTwinkleEffect
-				snowStorm.zIndex = 9998; //@TODO: per Flexform einstellbar machen snowZIndex
-				snowStorm.flakeWidth = 16; //@TODO: per Flexform einstellbar machen snowFlakeWidth
-				snowStorm.flakeHeight = 16; //@TODO: per Flexform einstellbar machen snowFalkeHeight
-				
-				function stopSnowing(){
-					snowStorm.stop();
-				}
+				}';
+			if($this->conf['usesnow']){
+				$js .= '
+					snowStorm.snowColor = \'' . $this->conf['snowColor'] . '\';
+					snowStorm.snowCharacter = \'' . $this->conf['snowCharacter'] . '\';
+					snowStorm.useTwinkleEffect = ' . $this->conf['snowUseTwinkleEffect'] . ';
+					snowStorm.zIndex = ' . $this->conf['snowZIndex'] . ';
+					snowStorm.flakeWidth = ' . $this->conf['snowFlakeWidth'] . ';
+					snowStorm.flakeHeight = ' . $this->conf['snowFlakeHeight'] . ';
+
+					function stopSnowing(){
+						snowStorm.stop();
+					}';
+			}
+			
+			$js .= '
 
 				$(document).ready(function(){
-					
 					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"></div><div id="mask"></div></div>\').appendTo(\'body\');
 				
 					$(\'area\').click(function(e){
 						e.preventDefault();
-						
 						var id = $(this).attr(\'id\');
 												
 						$.ajax({
@@ -163,9 +177,9 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 						$(\'#dialog\').css(\'min-height\', ' . $this->conf['layerHeight'] . ');
 						$(\'#dialog\').css(\'height\', \'auto\');
 						
-						$(\'#mask\').fadeIn(1000); //@TODO: per Flexform einstellbar machen modalFadeInTime
+						$(\'#mask\').fadeIn(' . $this->conf['modalFadeInTime'] . ');
 						$(\'#mask\').fadeTo("slow",0.8);
-						$(\'#dialog\').fadeIn(2000); //@TODO: per Flexform einstellbar machen dialogFadeInTime
+						$(\'#dialog\').fadeIn(' . $this->conf['dialogFadeInTime'] . ');
 
 					});
 					
@@ -174,15 +188,21 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 						//Cancel the link behavior
 						e.preventDefault();
 						alert(\'Fenster schliessen...\');
-						$(\'#mask, .window\').fadeOut(500); //@TODO: per Flexform einstellbar machen modalFadeOutTime
+						$(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 					}); 
 					
 					//if mask is clicked
-					$(\'#mask\').click(function () {
-						stopSnowing();
-						$(this).fadeOut(500); //@TODO: per Flexform einstellbar machen modalFadeOutTime
-						$(\'.window\').fadeOut(500); //@TODO: per Flexform einstellbar machen modalFadeOutTime
-						window.setTimeout(\'clearVariables()\',500);	//@TODO: per Flexform einstellbar machen modalFadeOutTime
+					$(\'#mask\').click(function () {';
+			if($this->conf['usesnow']){
+				$js .= '
+							stopSnowing();
+					';
+			}
+			
+			$js .= '
+						$(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+						$(\'.window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
 				});
 				</script>

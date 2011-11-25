@@ -7,13 +7,13 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>Angaben zum Hintergrundbild</sheetTitle>
+					<sheetTitle>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:sheetLabelBackground</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<image>
 						<TCEforms>
-							<label>Hintergrundbild für den Adventskalender</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:backgroundPic</label>
 							<config>
 								<type>group</type>
 								<internal_type>file</internal_type>
@@ -27,7 +27,7 @@
 					</image>
 					<imageWidth>
 						<TCEforms>
-							<label>Bildbreite in px</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:backgroundPicWidth</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -37,7 +37,7 @@
 					</imageWidth>
 					<imageHeight>
 						<TCEforms>
-							<label>Bildhöhe in px</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:backgroundPicHeight</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -47,7 +47,7 @@
 					</imageHeight>
 					<altText>
 						<TCEforms>
-							<label>Alternative Text</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:backgroundPicAltTag</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -61,13 +61,13 @@
 		<s_imagemap>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>Angaben zur Imagemap</sheetTitle>
+					<sheetTitle>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:sheetLabelImagemap</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<usemap>
 						<TCEforms>
-							<label>Image-Map-Bezeichnung</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:imagemapId</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -77,7 +77,7 @@
 					</usemap>
 					<imageMap>
 						<TCEforms>
-							<label>Image-Map</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:imagemapCode</label>
 							<config>
 								<type>text</type>
 								<size>10</size>
@@ -91,13 +91,13 @@
 		<s_pids>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>Angaben zur Imagemap</sheetTitle>
+					<sheetTitle>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:sheetLabelWickets</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<wicket1>
 						<TCEforms>
-							<label>PID Türchen 1</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket1</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -107,7 +107,7 @@
 					</wicket1>
 					<wicket2>
 						<TCEforms>
-							<label>PID Türchen 2</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket2</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -117,7 +117,7 @@
 					</wicket2>
 					<wicket3>
 						<TCEforms>
-							<label>PID Türchen 3</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket3</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -127,7 +127,7 @@
 					</wicket3>
 					<wicket4>
 						<TCEforms>
-							<label>PID Türchen 4</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket4</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -137,7 +137,7 @@
 					</wicket4>
 					<wicket5>
 						<TCEforms>
-							<label>PID Türchen 5</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket5</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -147,7 +147,7 @@
 					</wicket5>
 					<wicket6>
 						<TCEforms>
-							<label>PID Türchen 6</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket6</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -157,7 +157,7 @@
 					</wicket6>
 					<wicket7>
 						<TCEforms>
-							<label>PID Türchen 7</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket7</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -167,7 +167,7 @@
 					</wicket7>
 					<wicket8>
 						<TCEforms>
-							<label>PID Türchen 8</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket8</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -177,7 +177,7 @@
 					</wicket8>
 					<wicket9>
 						<TCEforms>
-							<label>PID Türchen 9</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket9</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -187,7 +187,7 @@
 					</wicket9>
 					<wicket10>
 						<TCEforms>
-							<label>PID Türchen 10</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket10</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -197,7 +197,7 @@
 					</wicket10>
 					<wicket11>
 						<TCEforms>
-							<label>PID Türchen 11</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket11</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -207,7 +207,7 @@
 					</wicket11>
 					<wicket12>
 						<TCEforms>
-							<label>PID Türchen 12</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket12</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -217,7 +217,7 @@
 					</wicket12>
 					<wicket13>
 						<TCEforms>
-							<label>PID Türchen 13</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket13</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -227,7 +227,7 @@
 					</wicket13>
 					<wicket14>
 						<TCEforms>
-							<label>PID Türchen 14</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket14</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -237,7 +237,7 @@
 					</wicket14>
 					<wicket15>
 						<TCEforms>
-							<label>PID Türchen 15</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket15</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -247,7 +247,7 @@
 					</wicket15>
 					<wicket16>
 						<TCEforms>
-							<label>PID Türchen 16</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket16</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -257,7 +257,7 @@
 					</wicket16>
 					<wicket17>
 						<TCEforms>
-							<label>PID Türchen 17</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket17</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -267,7 +267,7 @@
 					</wicket17>
 					<wicket18>
 						<TCEforms>
-							<label>PID Türchen 18</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket18</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -277,7 +277,7 @@
 					</wicket18>
 					<wicket19>
 						<TCEforms>
-							<label>PID Türchen 19</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket19</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -287,7 +287,7 @@
 					</wicket19>
 					<wicket20>
 						<TCEforms>
-							<label>PID Türchen 20</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket20</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -297,7 +297,7 @@
 					</wicket20>
 					<wicket21>
 						<TCEforms>
-							<label>PID Türchen 21</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket21</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -307,7 +307,7 @@
 					</wicket21>
 					<wicket22>
 						<TCEforms>
-							<label>PID Türchen 22</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket22</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -317,7 +317,7 @@
 					</wicket22>
 					<wicket23>
 						<TCEforms>
-							<label>PID Türchen 23</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket23</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -327,7 +327,7 @@
 					</wicket23>
 					<wicket24>
 						<TCEforms>
-							<label>PID Türchen 24</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:pidWicket24</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -341,13 +341,13 @@
 		<s_additional>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>Weitere Angaben</sheetTitle>
+					<sheetTitle>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:sheetLabelAjax</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<useajax>
 						<TCEforms>
-							<label>AJAX nutzen</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:ajaxUsage</label>
 							<config>
 								<type>check</type>
 							</config>
@@ -355,7 +355,7 @@
 					</useajax>
 					<layerWidth>
 						<TCEforms>
-							<label>Breite des Layers in px</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:ajaxLayerWidth</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -365,7 +365,7 @@
 					</layerWidth>
 					<layerHeight>
 						<TCEforms>
-							<label>Minimale Höhe des Layers in px</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:ajaxLayerMinHeight</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
@@ -373,8 +373,114 @@
 							</config>
 						</TCEforms>
 					</layerHeight>
+					<modalFadeInTime>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:ajaxModalFadeInTime</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</modalFadeInTime>
+					<dialogFadeInTime>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:ajaxDialogFadeInTime</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</dialogFadeInTime>
+					<modalFadeOutTime>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:ajaxModalDialogFadeOutTime</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</modalFadeOutTime>
 				</el>
 			</ROOT>
 		</s_additional>
+		<s_snowstorm>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:sheetLabelSnowstorm</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<snowUsage>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowUsage</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</snowUsage>
+					<snowColor>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowColor</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</snowColor>
+					<snowCharacter>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowCharacter</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</snowCharacter>
+					<snowUseTwinkleEffect>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowUseTwinkleEffect</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</snowUseTwinkleEffect>
+					<snowZIndex>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowZIndex</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</snowZIndex>
+					<snowFlakeWidth>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeWidth</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</snowFlakeWidth>
+					<snowFlakeHeight>
+						<TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeHeight</label>
+							<config>
+								<type>input</type>
+								<eval>text</eval>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</snowFlakeHeight>
+				</el>
+			</ROOT>
+		</s_snowstorm>
 	</sheets>
-</T3DataStructure> 
+</T3DataStructure>
