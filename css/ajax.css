@@ -40,3 +40,11 @@
 	-moz-border-radius: 10px;
 }
 
+#boxes #dialog #ajax-loader {
+	position:absolute;
+	height:128px; 
+	width:128px;
+	margin:-64px 0px 0px -64px;
+	top: 50%; 
+	left: 50%;
+}

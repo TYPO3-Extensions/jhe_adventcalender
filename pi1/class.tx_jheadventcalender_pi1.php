@@ -153,7 +153,9 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 					$(\'area\').click(function(e){
 						e.preventDefault();
 						var id = $(this).attr(\'id\');
-												
+						
+						$(\'#dialog\').html(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'img/ajax-loader.gif" /></div>\');
+						
 						$.ajax({
 							url: \'?eID=adventcalender\',
 							type: \'GET\',
