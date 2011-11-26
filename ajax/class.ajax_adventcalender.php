@@ -27,18 +27,28 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
 require_once(PATH_tslib.'class.tslib_eidtools.php');
 require_once(PATH_t3lib.'class.t3lib_div.php');
 
-
 class ajax_adventcalender extends tslib_pibase {
 
 	var $extKey = 'jhe_adventcalender';
-		 
+	
+	function init(){
+		require_once(PATH_tslib.'class.tslib_content.php');
+		require_once(PATH_t3lib.'class.t3lib_page.php');
+		tslib_eidtools::connectDB();
+		$GLOBALS['TSFE']->sys_page = t3lib_div::makeInstance('t3lib_pageSelect');
+		$GLOBALS['TSFE']->tmpl = t3lib_div::makeInstance('t3lib_TStemplate');
+		$this->cObj = t3lib_div::makeInstance('tslib_cObj');
+	}
+	
+	
 	/**
 	 * Main Methode
 	 *
 	 * @return string
 	 */
 	public function main() {
-		tslib_eidtools::connectDB();
+		$this->init();
+
 		$feUserObject = tslib_eidtools::initFeUser();
 
 		//retrieving GET data
@@ -53,12 +63,9 @@ class ajax_adventcalender extends tslib_pibase {
 		while ($content = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($selectContent)){
 			$contentTitle = $content['header'];
 		}
-
-		//@TODO: Link automatisch generieren
-		//create link to given page
-		//$pageContent = $this->cObj->getTypoLink_URL($pageID, array());
 		
-		$url = 'http://dev.teampoint.info/index.php?id=' . $pageID;
+		$link = $this->cObj->getTypoLink_URL($pageID);
+		$url = strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, -4)) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . $link;
 
 		$handle = fopen ($url, 'r');
 		$i ='0';
