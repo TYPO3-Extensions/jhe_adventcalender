@@ -125,11 +125,12 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			
 			$js = '
 				<script type="text/javascript">
-				
+
 				function clearVariables(){
 					document.getElementById(\'dialog\').style.top = "";
 					document.getElementById(\'dialog\').style.left = "";
-					document.getElementById(\'dialog\').innerHTML = "";
+					document.getElementById(\'dialogheader\').innerHTML = "";
+					document.getElementById(\'dialogcontent\').innerHTML = "";
 				}';
 			if($this->conf['usesnow']){
 				$js .= '
@@ -148,14 +149,15 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			$js .= '
 
 				$(document).ready(function(){
-					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"></div><div id="mask"></div></div>\').appendTo(\'body\');
-				
+					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"><div id="dialogheader"></div><div id="dialogcontent"></div></div><div id="mask"></div></div>\').appendTo(\'body\');
+					
+							
 					$(\'area\').click(function(e){
 						e.preventDefault();
 						var id = $(this).attr(\'id\');
-						
-						$(\'#dialog\').html(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'img/ajax-loader.gif" /></div>\');
-						
+											
+						$(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'img/ajax-loader.gif" /></div>\');
+
 						$.ajax({
 							url: \'?eID=adventcalender\',
 							type: \'GET\',
@@ -163,7 +165,9 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 							dataType: \'json\',
 							success: function(result) {
 								//alert(result.code);
-								$(\'#dialog\').html(\'<h3>\' + result.pageTitle + \'<a id="dialogclose" href="#">Close it</a></h3><div>\' + result.code + \'<div>\');
+								$(\'#ajax-loader\').hide();
+								$(\'#dialogheader\').html(\'<h2>\' + result.pageTitle + \'</h2><div id="dialogclose">Schließen</div>\');
+								$(\'#dialogcontent\').html(result.code);
 							}
 						});
 
@@ -185,14 +189,9 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 
 					});
 					
-					//if close button is clicked
-					$(\'a#dialogclose\').click(function (e) {
-						//Cancel the link behavior
-						e.preventDefault();
-						alert(\'Fenster schliessen...\');
-						$(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
-					}); 
 					
+					
+
 					//if mask is clicked
 					$(\'#mask\').click(function () {';
 			if($this->conf['usesnow']){
@@ -200,12 +199,24 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 							stopSnowing();
 					';
 			}
-			
 			$js .= '
 						$(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						$(\'.window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
+
+					//if close button is clicked
+					$(\'#dialogclose\').live(\'click\', function(){';
+			if($this->conf['usesnow']){
+				$js .= '
+							stopSnowing();
+					';
+			}			
+			$js .=		'$(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+						window.setTimeout(\'clearVariables()\',' . 500 . ');
+					});
+
+
 				});
 				</script>
 			';

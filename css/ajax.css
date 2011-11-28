@@ -48,3 +48,13 @@
 	top: 50%; 
 	left: 50%;
 }
+#boxes #dialog h2 {
+	border-bottom: 1px solid #f4f8f4;
+	font-size: 18px;
+	color: #d3e4d5;
+}
+#boxes #dialog #dialogclose {
+	color: magenta;
+		
+	
+}
