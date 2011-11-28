@@ -1,3 +1,39 @@
-2011-11-21 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de>
+2011-11-28  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.8
+
+	* included the check for an already integrated jquery library on includes 
+	  it when necessary
+	* new graphlical button for closing the dialog box
+
+2011-11-28  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.7
+
+	* debugging of the wrong behaviour of the dialogclose 
+
+2011-11-26 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.6
+
+	* added an ajax loader pic to the dialog layer
+
+2011-11-26 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.5
+
+	* added ajax functionality for dynamically generating the target links
+
+2011-11-25 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.4
+
+	* added correct english translation
+
+2011-11-25 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.3
+
+	* added multilingualism to the content element's flexform
+	* made most of the javascript settings configurable via flexform
+
+2011-11-24 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de>	V0.0.2
+
+	* finalizing the ajax functionality (nearls 95%)
+	* added snowStorm script
+
+2011-11-23 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de>	V0.0.1
+
+	* ajax functionality added - but does not work yet :-)
+
+2011-11-21 Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de>	V0.0.0
 
 	* initial code generated with kickstarter

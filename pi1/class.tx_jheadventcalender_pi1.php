@@ -118,6 +118,9 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		
 		//ajax functionality
 		if($this->conf['useajax']){
+			
+			$this->addJqueryLibrary();
+			
 			if($this->conf['usesnow']){
 				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/snowstorm.js"></script>';
 				$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
@@ -150,7 +153,6 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 
 				$(document).ready(function(){
 					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"><div id="dialogheader"></div><div id="dialogcontent"></div></div><div id="mask"></div></div>\').appendTo(\'body\');
-					
 							
 					$(\'area\').click(function(e){
 						e.preventDefault();
@@ -166,14 +168,12 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 							success: function(result) {
 								//alert(result.code);
 								$(\'#ajax-loader\').hide();
-								$(\'#dialogheader\').html(\'<h2>\' + result.pageTitle + \'</h2><div id="dialogclose">Schließen</div>\');
+								$(\'#dialogheader\').html(\'<h2>\' + result.pageTitle + \'</h2><div id="dialogclose"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'img/bt_close.gif" width="25" height="25" alt="schliessen..."</div>\');
 								$(\'#dialogcontent\').html(result.code);
 							}
 						});
 
-						var maskHeight = $(document).height();
-						var maskWidth = $(window).width();
-						$(\'#mask\').css({\'width\':maskWidth,\'height\':maskHeight});
+						
 
 						var winH = $(window).height();
 						var winW = $(window).width();
@@ -182,14 +182,24 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 						$(\'#dialog\').css(\'width\', ' . $this->conf['layerWidth'] . ');
 						$(\'#dialog\').css(\'min-height\', ' . $this->conf['layerHeight'] . ');
 						$(\'#dialog\').css(\'height\', \'auto\');
-						
+
+						if($(document).height() < $(\'#dialog\').height()){
+							var maskHeight = $(\'#dialog\').height(); 
+						} else {
+							var maskHeight = $(document).height();
+						}
+
+						var maskWidth = $(window).width();
+
+						$(\'#mask\').css({\'width\':maskWidth,\'height\':maskHeight});
+
 						$(\'#mask\').fadeIn(' . $this->conf['modalFadeInTime'] . ');
 						$(\'#mask\').fadeTo("slow",0.8);
 						$(\'#dialog\').fadeIn(' . $this->conf['dialogFadeInTime'] . ');
-
+			
 					});
 					
-					
+
 					
 
 					//if mask is clicked
@@ -233,6 +243,21 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		';
 	
 		return $this->pi_wrapInBaseClass($content);
+	}
+	
+	function addJqueryLibrary(){
+		// checks if t3jquery is loaded
+		if (t3lib_extMgm::isLoaded('t3jquery')) {
+			require_once(t3lib_extMgm::extPath('t3jquery').'class.tx_t3jquery.php');
+		}
+		// if t3jquery is loaded and the custom Library had been created
+		if (T3JQUERY === true) {
+			tx_t3jquery::addJqJS();
+		} else {
+			// if none of the previous is true, you need to include your own library
+			// just as an example in this way
+			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script language="JavaScript" src="' . t3lib_extMgm::extRelPath($this->extKey) . 'js/jquery/jquery-1.5.1.min.js"></script>';
+		}
 	}
 }
 
