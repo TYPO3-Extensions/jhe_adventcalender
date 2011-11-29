@@ -7,11 +7,11 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="pi1_title">Advent calender</label>
-			<label index="pi1_plus_wiz_description">grafischer Adventskalender</label>
+			<label index="pi1_plus_wiz_description">graphical advent calender</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="pi1_title">Adventskalender</label>
-			<label index="pi1_plus_wiz_description">graphical advent calender</label>
+			<label index="pi1_plus_wiz_description">grafischer Adventskalender</label>
 		</languageKey>
 	</data>
 </T3locallang>

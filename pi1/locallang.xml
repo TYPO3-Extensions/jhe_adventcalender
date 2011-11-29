@@ -50,7 +50,7 @@
 			<label index="snowUsage">Use snowstorm?</label>
 			<label index="snowColor">Color of snow flakes (RGB)</label>
 			<label index="snowCharacter">Charakter for snow flakes</label>
-			<label index="snowUseTwinkleEffect">Glitzereffekt nutzen?</label>
+			<label index="snowUseTwinkleEffect">Use twinkle effect?</label>
 			<label index="snowZIndex">Z-Index for snowstorm layer</label>
 			<label index="snowFlakeWidth">Maximum width of each snow flake in px</label>
 			<label index="snowFlakeHeight">Maximum height of each snow flake in px</label>

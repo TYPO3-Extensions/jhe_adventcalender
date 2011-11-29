@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => 'B·A·D Gesundheitsvorsorge und Sicherheitstechnik GmbH',
-	'version' => '0.0.10',
+	'version' => '0.0.11',
 	'constraints' => array(
 		'depends' => array(
 		),
