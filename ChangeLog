@@ -1,3 +1,13 @@
+2011-11-29  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.10
+
+	* added the correct ext icons
+
+2011-11-29  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.9
+
+	* general code refactoring
+	* debugging of generating the url to the page to be fetched for the ajax 
+	  output
+
 2011-11-28  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.0.8
 
 	* included the check for an already integrated jquery library on includes 

@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Advent calender',
-	'description' => 'A customizable advent calender based on pages as content placeholdres for the several wickets',
+	'description' => 'A customizable advent calender based on pages as content placeholders for the several wickets',
 	'category' => 'plugin',
 	'author' => 'Jari-Hermann Ernst, M.A.',
 	'author_email' => 'jari-hermann.ernst@bad-gmbh.de',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => 'B·A·D Gesundheitsvorsorge und Sicherheitstechnik GmbH',
-	'version' => '0.0.8',
+	'version' => '0.0.10',
 	'constraints' => array(
 		'depends' => array(
 		),

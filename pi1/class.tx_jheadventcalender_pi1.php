@@ -29,7 +29,6 @@
 
 require_once(PATH_tslib.'class.tslib_pibase.php');
 
-
 /**
  * Plugin 'Advent calender' for the 'jhe_adventcalender' extension.
  *
@@ -47,7 +46,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 	 *
 	 * @param	string		$content: The PlugIn content
 	 * @param	array		$conf: The PlugIn configuration
-	 * @return	The content that is displayed on the website
+	 * @return			The content that is displayed on the website
 	 */
 	function main($content, $conf) {
 		$this->conf = $conf;
@@ -57,7 +56,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 	
 		//get flexform data
 		$this->pi_initPIFlexForm();
-//t3lib_div::debug($this->cObj->data['pi_flexform']);
+
 		$this->conf['image'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'image', 'sDEF');
 		$this->conf['imageWidth'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'imageWidth', 'sDEF');
 		$this->conf['imageHeight'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'imageHeight', 'sDEF');
@@ -95,7 +94,6 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		foreach($imageMapAreaArr as $area){
 			$areaData = $area['attrs'];
 			//create typolinks for area href
-			//include_once(PATH_site.'typo3/sysext/cms/tslib/class.tslib_content.php');
 			$cObj = t3lib_div::makeInstance('tslib_cObj');
 			$hrefTarget = $cObj->typoLink_URL(array('parameter' => $this->conf['wicket'][$i]));
 
@@ -118,14 +116,15 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		
 		//ajax functionality
 		if($this->conf['useajax']){
-			
+			$user =  $GLOBALS['TSFE']->fe_user->user['username'];
+
 			$this->addJqueryLibrary();
 			
 			if($this->conf['usesnow']){
-				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'js/snowstorm.js"></script>';
+				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/js/snowstorm/snowstorm-min.js"></script>';
 				$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
 			}
-			
+
 			$js = '
 				<script type="text/javascript">
 
@@ -150,30 +149,27 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			}
 			
 			$js .= '
-
 				$(document).ready(function(){
 					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"><div id="dialogheader"></div><div id="dialogcontent"></div></div><div id="mask"></div></div>\').appendTo(\'body\');
 							
 					$(\'area\').click(function(e){
 						e.preventDefault();
 						var id = $(this).attr(\'id\');
-											
-						$(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'img/ajax-loader.gif" /></div>\');
+						var username = \'' . $user . '\';
+						
+						$(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/ajax-loader.gif" /></div>\');
 
 						$.ajax({
 							url: \'?eID=adventcalender\',
 							type: \'GET\',
-							data: \'pageID=\' + id,
+							data: \'pageID=\' + id + \'&user=\' + username,
 							dataType: \'json\',
 							success: function(result) {
-								//alert(result.code);
 								$(\'#ajax-loader\').hide();
-								$(\'#dialogheader\').html(\'<h2>\' + result.pageTitle + \'</h2><div id="dialogclose"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'img/bt_close.gif" width="25" height="25" alt="schliessen..."</div>\');
+								$(\'#dialogheader\').html(\'<h2>\' + result.pageTitle + \'</h2><div id="dialogclose"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/bt_close.gif" width="25" height="25" alt="schliessen..."</div>\');
 								$(\'#dialogcontent\').html(result.code);
 							}
 						});
-
-						
 
 						var winH = $(window).height();
 						var winW = $(window).width();
@@ -196,11 +192,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 						$(\'#mask\').fadeIn(' . $this->conf['modalFadeInTime'] . ');
 						$(\'#mask\').fadeTo("slow",0.8);
 						$(\'#dialog\').fadeIn(' . $this->conf['dialogFadeInTime'] . ');
-			
 					});
-					
-
-					
 
 					//if mask is clicked
 					$(\'#mask\').click(function () {';
@@ -225,15 +217,12 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			$js .=		'$(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
-
-
 				});
 				</script>
 			';
 			
-			$css = '<link rel="stylesheet" type="text/css" href="' . t3lib_extMgm::siteRelPath($this->extKey) . 'css/ajax.css" />';
+			$css = '<link rel="stylesheet" type="text/css" href="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/css/ajax.css" />';
 			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $css;
-
 		}
 		
 		$content='
@@ -245,6 +234,11 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		return $this->pi_wrapInBaseClass($content);
 	}
 	
+	/**
+	 * Adds the jquery library
+	 *
+	 * @return			The correct header script part for including the jquery library - if necessary
+	 */
 	function addJqueryLibrary(){
 		// checks if t3jquery is loaded
 		if (t3lib_extMgm::isLoaded('t3jquery')) {
@@ -256,7 +250,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		} else {
 			// if none of the previous is true, you need to include your own library
 			// just as an example in this way
-			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script language="JavaScript" src="' . t3lib_extMgm::extRelPath($this->extKey) . 'js/jquery/jquery-1.5.1.min.js"></script>';
+			$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= '<script language="JavaScript" src="' . t3lib_extMgm::extRelPath($this->extKey) . 'res/js/jquery/jquery-1.5.1.min.js"></script>';
 		}
 	}
 }

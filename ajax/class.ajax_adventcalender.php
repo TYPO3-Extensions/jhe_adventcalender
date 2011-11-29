@@ -50,7 +50,7 @@ class ajax_adventcalender extends tslib_pibase {
 		$this->init();
 
 		$feUserObject = tslib_eidtools::initFeUser();
-
+		
 		//retrieving GET data
 		$pageID = t3lib_div::_GET('pageID');
 	
@@ -65,24 +65,25 @@ class ajax_adventcalender extends tslib_pibase {
 		}
 		
 		$link = $this->cObj->getTypoLink_URL($pageID);
-		$url = strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, -4)) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . $link;
 
-		$handle = fopen ($url, 'r');
-		$i ='0';
-		while (!feof($handle)) {
-			$buffer .= fgets($handle, 4096);
-			$i++;
+		if($_SERVER['HTTPS'] == 'on') {
+			$protocol = 'https://';
+		} else {
+			$protocol = 'http://';
 		}
-		fclose ($handle);
-
-		$buffer = strstr($buffer, '<div');
-		$buffer = trim(substr($buffer, '0', strpos($buffer, '</body')));
-
+		$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . $link;
+		
+		$fileContent = file_get_contents($url); 
+          $pos1 = strpos($fileContent,'<body>') + strlen('<body>'); 
+		$pos2 = strpos($fileContent,'</body>');
+                                 
+		$content = trim(substr($fileContent,$pos1,$pos2-$pos1));
+			
 		$return = array(
 		    'pageTitle' => $pageName,
 		    'contentTitle' => $contentTitle,
 		    'url' => $url,
-		    'code' => $buffer
+		    'code' => $content
 		);
 
 		return t3lib_div::array2json($return);
