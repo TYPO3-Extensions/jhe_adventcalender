@@ -7,7 +7,7 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="sheetLabelBackground">Background picture</label>
-			<label index="backgroundPic">Background picture for the adventcalender</label>
+			<label index="backgroundPic">Background picture for the adventcalendar</label>
 			<label index="backgroundPicWidth">Picture width in px</label>
 			<label index="backgroundPicHeight">Picture height in px</label>
 			<label index="backgroundPicAltTag">Alternative text</label>
