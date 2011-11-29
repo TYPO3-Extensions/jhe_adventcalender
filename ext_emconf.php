@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "jhe_adventcalender".
 #
-# Auto generated 21-11-2011 10:25
+# Auto generated 29-11-2011 16:11
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => 'B·A·D Gesundheitsvorsorge und Sicherheitstechnik GmbH',
-	'version' => '0.0.11',
+	'version' => '0.1.0',
 	'constraints' => array(
 		'depends' => array(
 		),
@@ -38,7 +38,9 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:14:{s:9:"ChangeLog";s:4:"de36";s:10:"README.txt";s:4:"ee2d";s:12:"ext_icon.gif";s:4:"1bdc";s:17:"ext_localconf.php";s:4:"035d";s:14:"ext_tables.php";s:4:"ec8f";s:13:"locallang.xml";s:4:"27e4";s:16:"locallang_db.xml";s:4:"7b6d";s:19:"doc/wizard_form.dat";s:4:"88d5";s:20:"doc/wizard_form.html";s:4:"ed68";s:14:"pi1/ce_wiz.gif";s:4:"02b6";s:38:"pi1/class.tx_jheadventcalender_pi1.php";s:4:"f37e";s:46:"pi1/class.tx_jheadventcalender_pi1_wizicon.php";s:4:"24a6";s:13:"pi1/clear.gif";s:4:"cc11";s:17:"pi1/locallang.xml";s:4:"6436";}',
+	'_md5_values_when_last_written' => 'a:24:{s:9:"ChangeLog";s:4:"158c";s:10:"README.txt";s:4:"ee2d";s:12:"ext_icon.gif";s:4:"2397";s:17:"ext_localconf.php";s:4:"ce61";s:14:"ext_tables.php";s:4:"f571";s:13:"locallang.xml";s:4:"dc9f";s:16:"locallang_db.xml";s:4:"7b6d";s:34:"ajax/class.ajax_adventcalender.php";s:4:"2166";s:14:"doc/manual.sxw";s:4:"3ca1";s:19:"doc/wizard_form.dat";s:4:"88d5";s:20:"doc/wizard_form.html";s:4:"ed68";s:14:"pi1/ce_wiz.gif";s:4:"cf99";s:38:"pi1/class.tx_jheadventcalender_pi1.php";s:4:"3770";s:46:"pi1/class.tx_jheadventcalender_pi1_wizicon.php";s:4:"8bee";s:13:"pi1/clear.gif";s:4:"cc11";s:19:"pi1/flexform_ds.xml";s:4:"18ff";s:17:"pi1/locallang.xml";s:4:"cfc4";s:16:"res/css/ajax.css";s:4:"c195";s:23:"res/img/ajax-loader.gif";s:4:"817b";s:21:"res/img/bg_dialog.gif";s:4:"2841";s:20:"res/img/bt_close.gif";s:4:"e595";s:33:"res/js/jquery/jquery-1.5.1.min.js";s:4:"5238";s:28:"res/js/snowstorm/license.txt";s:4:"ea96";s:33:"res/js/snowstorm/snowstorm-min.js";s:4:"244c";}',
+	'suggests' => array(
+	),
 );
 
 ?>

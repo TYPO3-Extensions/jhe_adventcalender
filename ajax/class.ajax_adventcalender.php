@@ -74,10 +74,12 @@ class ajax_adventcalender extends tslib_pibase {
 		$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . $link;
 		
 		$fileContent = file_get_contents($url); 
-          $pos1 = strpos($fileContent,'<body>') + strlen('<body>'); 
+          $pos1 = strpos($fileContent,'<body') + strlen('<body'); 
 		$pos2 = strpos($fileContent,'</body>');
                                  
 		$content = trim(substr($fileContent,$pos1,$pos2-$pos1));
+		$pos3 = strpos($content, '>');
+		$content = trim(substr($content, $pos3+1));
 			
 		$return = array(
 		    'pageTitle' => $pageName,
