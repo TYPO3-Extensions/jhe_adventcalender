@@ -159,6 +159,22 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 						
 						$(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/ajax-loader.gif" /></div>\');
 
+						var winH = $(window).height();
+						var winW = $(window).width();
+						$(\'#dialog\').css(\'top\',  winH/2-$(\'#dialog\').height()/2);
+						$(\'#dialog\').css(\'left\', winW/2-$(\'#dialog\').width()/2);
+						$(\'#dialog\').css(\'width\', ' . $this->conf['layerWidth'] . ');
+						$(\'#dialog\').css(\'min-height\', ' . $this->conf['layerHeight'] . ');
+						$(\'#dialog\').css(\'height\', \'auto\');
+
+						var maskHeight = $(document).height();
+						var maskWidth = $(window).width();
+						$(\'#mask\').css({\'width\':maskWidth,\'height\':maskHeight});
+
+						$(\'#mask\').fadeIn(' . $this->conf['modalFadeInTime'] . ');
+						$(\'#mask\').fadeTo("slow",0.8);
+						$(\'#dialog\').fadeIn(' . $this->conf['dialogFadeInTime'] . ');
+
 						$.ajax({
 							url: \'?eID=adventcalender\',
 							type: \'GET\',
@@ -168,30 +184,14 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 								$(\'#ajax-loader\').hide();
 								$(\'#dialogheader\').html(\'<h2>\' + result.pageTitle + \'</h2><div id="dialogclose"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/bt_close.gif" width="25" height="25" alt="schliessen..."</div>\');
 								$(\'#dialogcontent\').html(result.code);
+								if($(document).height() < $(\'#dialog\').height()){
+									maskHeight = $(\'#dialog\').height(); 
+								} else {
+									maskHeight = $(document).height();
+								}
+								$(\'#mask\').css({\'width\':maskWidth,\'height\':maskHeight});
 							}
 						});
-
-						var winH = $(window).height();
-						var winW = $(window).width();
-						$(\'#dialog\').css(\'top\',  winH/2-$(\'#dialog\').height()/2);
-						$(\'#dialog\').css(\'left\', winW/2-$(\'#dialog\').width()/2);
-						$(\'#dialog\').css(\'width\', ' . $this->conf['layerWidth'] . ');
-						$(\'#dialog\').css(\'min-height\', ' . $this->conf['layerHeight'] . ');
-						$(\'#dialog\').css(\'height\', \'auto\');
-
-						if($(document).height() < $(\'#dialog\').height()){
-							var maskHeight = $(\'#dialog\').height(); 
-						} else {
-							var maskHeight = $(document).height();
-						}
-
-						var maskWidth = $(window).width();
-
-						$(\'#mask\').css({\'width\':maskWidth,\'height\':maskHeight});
-
-						$(\'#mask\').fadeIn(' . $this->conf['modalFadeInTime'] . ');
-						$(\'#mask\').fadeTo("slow",0.8);
-						$(\'#dialog\').fadeIn(' . $this->conf['dialogFadeInTime'] . ');
 					});
 
 					//if mask is clicked
