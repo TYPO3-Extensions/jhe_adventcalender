@@ -52,7 +52,7 @@ class ajax_adventcalender extends tslib_pibase {
 		$feUserObject = tslib_eidtools::initFeUser();
 		
 		//retrieving GET data
-		$pageID = t3lib_div::_GET('pageID');
+		$pageID = intval(t3lib_div::_GET('pageID'));
 	
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'pages', 'uid = ' . $pageID);
 		while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)){

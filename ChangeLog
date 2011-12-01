@@ -1,3 +1,7 @@
+2011-12-01  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.2.1
+
+	* debugging: avoiding a security leak // Thanks to Bernd Wilke for the hint
+
 2011-11-29  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.2.0
 
 	* debugging: modal layer now swaps the whole page even if the dialog box 
