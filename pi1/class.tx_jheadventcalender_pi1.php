@@ -119,7 +119,8 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			$this->addJqueryLibrary();
 			
 			if($this->conf['usesnow']){
-				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/js/snow/jquery.snow.js"></script>';
+				$javascript .= '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/js/snow/jquery.snow.js"></script>';
+                $javascript .= '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/js/jquery/jquery.cookie.js"></script>';
 				$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
 			}
 
@@ -208,6 +209,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
                         //alert(\'Mask geklickt!\');
                         $.fn.stopsnow(\'#mask\');
                         $.fn.stopsnow(\'body\');
+   
                         $(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						$(\'.window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');

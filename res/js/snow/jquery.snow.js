@@ -15,7 +15,7 @@
  * @example $.fn.snow({ maxSize: 200, newOn: 1000 });
  */
 (function($){
-	
+    
 	$.fn.snow = function(options){
 	
 			var $flake 			= $('<div class="flake" />').css({'position': 'absolute', 'top': '-50px'}).html('&#10052;'),
@@ -26,10 +26,10 @@
 									maxSize		: 20,
 									newOn		: 500,
 									flakeColor	: "#FFFFFF",
-                                    appendTo     : "body"
+                                    appendTo    : "body"
 								},
 				options			= $.extend({}, defaults, options);
-						
+			
 			var interval		= setInterval( function(){
 				var startPositionLeft 	= Math.random() * documentWidth - 100,
 				 	startOpacity		= 0.5 + Math.random(),
@@ -61,13 +61,22 @@
 						}
 					);
 			}, options.newOn);
+
+            //set cookie
+            var cookieName = 'snowlayer_' + options.appendTo;
+            $.cookie(cookieName, interval);
+
 	};
 	
     $.fn.stopsnow = function(layer){
-        //alert(layer);
-        $(layer + ' div.flake').stop();
-        $(layer + ' div.flake').remove();
-        //$.fx.off = true;
+        var cookieName = 'snowlayer_' + layer;
+        var selectedInterval = $.cookie(cookieName);
+
+        $(layer).children('.flake').remove();
+        clearInterval(selectedInterval);
+        $.cookie(cookieName, null);
     };
+    
+    
     
 })(jQuery);
