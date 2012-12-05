@@ -421,64 +421,46 @@
 							</config>
 						</TCEforms>
 					</snowUsage>
-					<snowColor>
+					<snowFlakeColor>
 						<TCEforms>
-							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowColor</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeColor</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
 								<size>5</size>
 							</config>
 						</TCEforms>
-					</snowColor>
-					<snowCharacter>
+					</snowFlakeColor>
+					<snowFlakeMinSize>
 						<TCEforms>
-							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowCharacter</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeMinSize</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
 								<size>5</size>
 							</config>
 						</TCEforms>
-					</snowCharacter>
-					<snowUseTwinkleEffect>
+					</snowFlakeMinSize>
+					<snowFlakeMaxSize>
 						<TCEforms>
-							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowUseTwinkleEffect</label>
-							<config>
-								<type>check</type>
-							</config>
-						</TCEforms>
-					</snowUseTwinkleEffect>
-					<snowZIndex>
-						<TCEforms>
-							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowZIndex</label>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeMaxSize</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
 								<size>5</size>
 							</config>
 						</TCEforms>
-					</snowZIndex>
-					<snowFlakeWidth>
-						<TCEforms>
-							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeWidth</label>
+					</snowFlakeMaxSize>
+                    <snowTimeForNewFlake>
+                        <TCEforms>
+							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowTimeForNewFlake</label>
 							<config>
 								<type>input</type>
 								<eval>text</eval>
 								<size>5</size>
 							</config>
 						</TCEforms>
-					</snowFlakeWidth>
-					<snowFlakeHeight>
-						<TCEforms>
-							<label>LLL:EXT:jhe_adventcalender/pi1/locallang.xml:snowFlakeHeight</label>
-							<config>
-								<type>input</type>
-								<eval>text</eval>
-								<size>5</size>
-							</config>
-						</TCEforms>
-					</snowFlakeHeight>
+                    </snowTimeForNewFlake>
 				</el>
 			</ROOT>
 		</s_snowstorm>

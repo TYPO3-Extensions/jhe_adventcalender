@@ -78,12 +78,10 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 		$this->conf['modalDialogFadeOutTime'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'ajaxModalDialogFadeOutTime', 's_additional');
 		
 		$this->conf['usesnow'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowUsage', 's_snowstorm');
-		$this->conf['snowColor'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowColor', 's_snowstorm');
-		$this->conf['snowCharacter'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowCharacter', 's_snowstorm');
-		$this->conf['snowUseTwinkleEffect'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowUseTwinkleEffect', 's_snowstorm');
-		$this->conf['snowZIndex'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowZIndex', 's_snowstorm');
-		$this->conf['snowFlakeWidth'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeWidth', 's_snowstorm');
-		$this->conf['snowFlakeHeight'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeHeight', 's_snowstorm');
+		$this->conf['snowFlakeColor'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeColor', 's_snowstorm');
+		$this->conf['snowFlakeMinSize'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeMinSize', 's_snowstorm');
+		$this->conf['snowFlakeMaxSize'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowFlakeMaxSize', 's_snowstorm');
+        $this->conf['snowTimeForNewFlake'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'],'snowTimeForNewFlake', 's_snowstorm');
 
 		//rebuild image-map
 		$imageMapArr = t3lib_div::xml2tree($this->conf['imageMap']);
@@ -121,7 +119,7 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			$this->addJqueryLibrary();
 			
 			if($this->conf['usesnow']){
-				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/js/snowstorm/snowstorm-min.js"></script>';
+				$javascript = '<script src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/js/snow/jquery.snow.js"></script>';
 				$GLOBALS['TSFE']->additionalHeaderData[$this->extKey] .= $javascript;
 			}
 
@@ -136,20 +134,23 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 				}';
 			if($this->conf['usesnow']){
 				$js .= '
-					snowStorm.snowColor = \'' . $this->conf['snowColor'] . '\';
-					snowStorm.snowCharacter = \'' . $this->conf['snowCharacter'] . '\';
-					snowStorm.useTwinkleEffect = ' . $this->conf['snowUseTwinkleEffect'] . ';
-					snowStorm.zIndex = ' . $this->conf['snowZIndex'] . ';
-					snowStorm.flakeWidth = ' . $this->conf['snowFlakeWidth'] . ';
-					snowStorm.flakeHeight = ' . $this->conf['snowFlakeHeight'] . ';
-
-					function stopSnowing(){
-						snowStorm.stop();
-					}';
+					var snowFlakeColor = \'' . $this->conf['snowFlakeColor'] . '\';
+					var flakeMinSize = ' . $this->conf['snowFlakeMinSize'] . ';
+					var flakeMaxSize = ' . $this->conf['snowFlakeMaxSize'] . ';
+                    var timeForNewFlake = ' . $this->conf['snowTimeForNewFlake'] . ';
+                    ';
 			}
 			
 			$js .= '
 				$(document).ready(function(){
+                
+                    $.fn.snow({ 
+                        minSize: flakeMinSize, 
+                        maxSize: flakeMaxSize, 
+                        newOn: timeForNewFlake, 
+                        flakeColor: snowFlakeColor
+                    });
+
 					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"><div id="dialogheader"></div><div id="dialogcontent"></div></div><div id="mask"></div></div>\').appendTo(\'body\');
 							
 					$(\'area\').click(function(e){
@@ -157,7 +158,15 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 						var id = $(this).attr(\'id\');
 						var username = \'' . $user . '\';
 						
-						$(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/ajax-loader.gif" /></div>\');
+                        $.fn.snow({ 
+                            minSize: flakeMinSize, 
+                            maxSize: flakeMaxSize, 
+                            newOn: timeForNewFlake, 
+                            flakeColor: snowFlakeColor,
+                            appendTo: \'#mask\'
+                        });
+
+                        $(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/ajax-loader.gif" /></div>\');
 
 						var winH = $(window).height();
 						var winW = $(window).width();
@@ -195,26 +204,20 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 					});
 
 					//if mask is clicked
-					$(\'#mask\').click(function () {';
-			if($this->conf['usesnow']){
-				$js .= '
-							stopSnowing();
-					';
-			}
-			$js .= '
-						$(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+					$(\'#mask\').click(function () {
+                        //alert(\'Mask geklickt!\');
+                        $.fn.stopsnow(\'#mask\');
+                        $.fn.stopsnow(\'body\');
+                        $(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						$(\'.window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
 
 					//if close button is clicked
-					$(\'#dialogclose\').live(\'click\', function(){';
-			if($this->conf['usesnow']){
-				$js .= '
-							stopSnowing();
-					';
-			}			
-			$js .=		'$(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+					$(\'#dialogclose\').live(\'click\', function(){
+                        $.fn.stopsnow(\'#mask\');
+                        $.fn.stopsnow(\'body\');
+                        $(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
 				});

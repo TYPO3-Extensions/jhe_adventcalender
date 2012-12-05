@@ -48,12 +48,11 @@
 			<label index="ajaxModalDialogFadeOutTime">FadeOut time in ms</label>
 			<label index="sheetLabelSnowstorm">Snowstorm settings</label>
 			<label index="snowUsage">Use snowstorm?</label>
-			<label index="snowColor">Color of snow flakes (RGB)</label>
-			<label index="snowCharacter">Charakter for snow flakes</label>
-			<label index="snowUseTwinkleEffect">Use twinkle effect?</label>
-			<label index="snowZIndex">Z-Index for snowstorm layer</label>
-			<label index="snowFlakeWidth">Maximum width of each snow flake in px</label>
-			<label index="snowFlakeHeight">Maximum height of each snow flake in px</label>
+			<label index="snowFlakeColor">Color of snow flakes (RGB)</label>
+			<label index="snowFlakeMinSize">Minimum size of a singe snw flake in px</label>
+			<label index="snowFlakeMaxSize">Maximum size of a singe snw flake in px</label>
+            <label index="snowFlakeMaxSize">Maximale Höhe einer Schneeflocke in px</label>
+            <label index="snowTimeForNewFlake">Time before a new flake is generated in ms</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="sheetLabelBackground">Angaben zum Hintergrundbild</label>
@@ -98,12 +97,10 @@
 			<label index="ajaxModalDialogFadeOutTime">FadeOut-Zeit in ms</label>
 			<label index="sheetLabelSnowstorm">Einstellungen Schneefall</label>
 			<label index="snowUsage">Schneefall einschalten?</label>
-			<label index="snowColor">Farbe des Schnees als RGB-Wert</label>
-			<label index="snowCharacter">Zeichen für die Schnee-Darstellung</label>
-			<label index="snowUseTwinkleEffect">Glitzereffekt nutzen?</label>
-			<label index="snowZIndex">Angabe des z-Index</label>
-			<label index="snowFlakeWidth">Maximale Breiter einer Schneeflocke in px</label>
-			<label index="snowFlakeHeight">Maximale Höhe einer Schneeflocke in px</label>
+			<label index="snowFlakeColor">Farbe des Schnees als RGB-Wert</label>
+			<label index="snowFlakeMinSize">Minimale Größe einer Schneeflocke in px</label>
+			<label index="snowFlakeMaxSize">Maximale Größe einer Schneeflocke in px</label>
+            <label index="snowTimeForNewFlake">Zeit bevor eine neuen Schneeflocke generiert wird in ms</label>
 		</languageKey>
 	</data>
 </T3locallang>
