@@ -76,7 +76,5 @@
         clearInterval(selectedInterval);
         $.cookie(cookieName, null);
     };
-    
-    
-    
+
 })(jQuery);
