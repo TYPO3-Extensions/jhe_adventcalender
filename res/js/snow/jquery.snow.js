@@ -13,6 +13,11 @@
  * @params newOn - frequency in ms of appearing of new snowflake, 500 by default
  * @params flakeColor - color of snowflake, #FFFFFF by default
  * @example $.fn.snow({ maxSize: 200, newOn: 1000 });
+ * 
+ * some small little changes to append the snow to a special layer of the html code
+ * and an new function to stop the snow (lib jquery.cookie.js needed!)
+ * by Jari-Hermann Ernst, M.A. 2012-12-10
+ * 
  */
 (function($){
     

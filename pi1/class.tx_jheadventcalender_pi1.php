@@ -143,31 +143,37 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 			}
 			
 			$js .= '
-				$(document).ready(function(){
+				$(document).ready(function(){';
                 
+            if($this->conf['usesnow']){
+                $js .= '
                     $.fn.snow({ 
                         minSize: flakeMinSize, 
                         maxSize: flakeMaxSize, 
                         newOn: timeForNewFlake, 
                         flakeColor: snowFlakeColor
-                    });
+                    });';
+            }
 
-					$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"><div id="dialogheader"></div><div id="dialogcontent"></div></div><div id="mask"></div></div>\').appendTo(\'body\');
+			$js .= '		$(\'<div id="boxes"><div id="dialog" class="window" style="width: ' . $this->conf['layerWidth'] . 'px;height:' . $this->conf['layerHeight'] . 'px;"><div id="dialogheader"></div><div id="dialogcontent"></div></div><div id="mask"></div></div>\').appendTo(\'body\');
 							
 					$(\'area\').click(function(e){
 						e.preventDefault();
 						var id = $(this).attr(\'id\');
-						var username = \'' . $user . '\';
+						var username = \'' . $user . '\';';
 						
+            if($this->conf['usesnow']){
+                $js .= '            
                         $.fn.snow({ 
                             minSize: flakeMinSize, 
                             maxSize: flakeMaxSize, 
                             newOn: timeForNewFlake, 
                             flakeColor: snowFlakeColor,
                             appendTo: \'#mask\'
-                        });
+                        });';
+            }
 
-                        $(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/ajax-loader.gif" /></div>\');
+            $js .= '            $(\'#dialogcontent\').append(\'<div id="ajax-loader"><img src="' . t3lib_extMgm::siteRelPath($this->extKey) . 'res/img/ajax-loader.gif" /></div>\');
 
 						var winH = $(window).height();
 						var winW = $(window).width();
@@ -205,21 +211,28 @@ class tx_jheadventcalender_pi1 extends tslib_pibase {
 					});
 
 					//if mask is clicked
-					$(\'#mask\').click(function () {
-                        //alert(\'Mask geklickt!\');
+					$(\'#mask\').click(function () {';
+            
+            if($this->conf['usesnow']){
+                $js .= '
                         $.fn.stopsnow(\'#mask\');
-                        $.fn.stopsnow(\'body\');
+                        $.fn.stopsnow(\'body\');';
+            }
    
-                        $(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+             $js .= '           $(this).fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						$(\'.window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
 
 					//if close button is clicked
-					$(\'#dialogclose\').live(\'click\', function(){
+					$(\'#dialogclose\').live(\'click\', function(){';
+             
+             if($this->conf['usesnow']){
+                 $js .= '
                         $.fn.stopsnow(\'#mask\');
-                        $.fn.stopsnow(\'body\');
-                        $(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
+                        $.fn.stopsnow(\'body\');';
+             }
+             $js .= ' $(\'#mask, .window\').fadeOut(' . $this->conf['modalDialogFadeOutTime'] . ');
 						window.setTimeout(\'clearVariables()\',' . 500 . ');
 					});
 				});
