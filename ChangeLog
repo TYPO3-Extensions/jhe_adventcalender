@@ -1,3 +1,7 @@
+2013-06-17  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.3.1
+
+	* added the typo3 version dependency for the ter clean up process
+
 2012-12-10  Jari-Hermann Ernst, M.A.  <jari-hermann.ernst@bad-gmbh.de> V0.3.0
 
     * changed the js library for generating the snow fall to jquery.snow.js by 
